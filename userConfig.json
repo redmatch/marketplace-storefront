@@ -1,7 +1,5 @@
 {
-  "collections": [
-    "Please enter your Collection ID"
-  ],
+  "collections": ["Please enter your Collection ID"],
   "xApiKey": "Please enter your API Key",
   "serviceFee": "Please enter your service fee (Recommended 4.25)",
   "currencyOption": "Please enter your payment token",
