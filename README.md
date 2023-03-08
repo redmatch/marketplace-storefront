@@ -39,6 +39,8 @@ Example config:
   "collections": [
     "CnFFwJ4V2RaNorLs7EdtNZqQ2uhgXp6X3gKEmLgxEBPZ"
   ],
+  // Marketplace Address. Acquired from the Developer Dashboard
+  "auctionHouse": "ADbCePQTzA9feKn78ny4UhD5ADVgm16T3vZabXN1dkzQ",
   // API Key - Example API Key.
   "xApiKey": "mw_lCX2WHH7_d0nT_4ctuaL1y_us3_Th1s_l0L_JN0FAMIqM5",
   // Your marketplace service fee. Acquired from developer dashboard
