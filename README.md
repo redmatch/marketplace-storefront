@@ -1,5 +1,3 @@
-[![All Contributors](https://img.shields.io/github/all-contributors/mirrorworld-universe/marketplace-storefront?color=ee8449&style=flat-square)](#contributors)
-
 # Mirror World Marketplace Storefront Template
 
 This repo contains a plug n' play template for the Mirror World SDK Marketplace. All features in this template were built using [Mirror World's SDK API](https://mirrorworld.fun/docs)
