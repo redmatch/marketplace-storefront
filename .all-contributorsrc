@@ -7,6 +7,16 @@
   "commitConvention": "angular",
   "contributors": [
     {
+      "login": "codebender828",
+      "name": "Jonathan Bakebwa",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21237954?v=4",
+      "profile": "https://jbakebwa.dev",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    },
+    {
       "login": "lynancy",
       "name": "nancyl",
       "avatar_url": "https://avatars.githubusercontent.com/u/22240479?v=4",
