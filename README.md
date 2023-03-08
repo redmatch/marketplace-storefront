@@ -87,25 +87,6 @@ If you configured your marketplace correctly, you should be able to see a screen
 ### 5. That's it! Deploy your static site!
 You can deploy yoru Next.js site using [Vercel](https://vercel.com) or [Netlify](https://netlify.com), or [Cloudflare Pages](https://pages.cloudflare.dev).
 
-# Contributors
-
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore-start -->
-<!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://jbakebwa.dev"><img src="https://avatars.githubusercontent.com/u/21237954?v=4?s=100" width="100px;" alt="Jonathan Bakebwa"/><br /><sub><b>Jonathan Bakebwa</b></sub></a><br /><a href="https://github.com/mirrorworld-universe/marketplace-storefront/commits?author=codebender828" title="Code">💻</a> <a href="https://github.com/mirrorworld-universe/marketplace-storefront/issues?q=author%3Acodebender828" title="Bug reports">🐛</a></td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- markdownlint-restore -->
-<!-- prettier-ignore-end -->
-
-<!-- ALL-CONTRIBUTORS-LIST:END -->
-
-
 ## License
 MIT License
 
@@ -116,6 +97,14 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://jbakebwa.dev"><img src="https://avatars.githubusercontent.com/u/21237954?v=4?s=100" width="100px;" alt="Jonathan Bakebwa"/><br /><sub><b>Jonathan Bakebwa</b></sub></a><br /><a href="https://github.com/mirrorworld-universe/marketplace-storefront/commits?author=codebender828" title="Code">💻</a> <a href="https://github.com/mirrorworld-universe/marketplace-storefront/issues?q=author%3Acodebender828" title="Bug reports">🐛</a></td>
+    </tr>
+  </tbody>
+</table>
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
