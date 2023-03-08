@@ -1,3 +1,5 @@
+[![All Contributors](https://img.shields.io/github/all-contributors/mirrorworld-universe/marketplace-storefront?color=ee8449&style=flat-square)](#contributors)
+
 # Mirror World Marketplace Storefront Template
 
 This repo contains a plug n' play template for the Mirror World SDK Marketplace. All features in this template were built using [Mirror World's SDK API](https://mirrorworld.fun/docs)
@@ -84,6 +86,17 @@ If you configured your marketplace correctly, you should be able to see a screen
 ### 5. That's it! Deploy your static site!
 You can deploy yoru Next.js site using [Vercel](https://vercel.com) or [Netlify](https://netlify.com), or [Cloudflare Pages](https://pages.cloudflare.dev).
 
+# Contributors
 
-## LICENSE
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+
+## License
 MIT License
