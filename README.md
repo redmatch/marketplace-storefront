@@ -1,6 +1,6 @@
 # Mirror World Marketplace Storefront Template
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-3-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 This repo contains a plug n' play template for the Mirror World SDK Marketplace. All features in this template were built using [Mirror World's SDK API](https://mirrorworld.fun/docs)
@@ -102,11 +102,14 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://jbakebwa.dev"><img src="https://avatars.githubusercontent.com/u/21237954?v=4?s=100" width="100px;" alt="Jonathan Bakebwa"/><br /><sub><b>Jonathan Bakebwa</b></sub></a><br /><a href="https://github.com/mirrorworld-universe/marketplace-storefront/commits?author=codebender828" title="Code">💻</a> <a href="https://github.com/mirrorworld-universe/marketplace-storefront/issues?q=author%3Acodebender828" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/lynancy"><img src="https://avatars.githubusercontent.com/u/22240479?v=4?s=100" width="100px;" alt="nancyl"/><br /><sub><b>nancyl</b></sub></a><br /><a href="https://github.com/mirrorworld-universe/marketplace-storefront/commits?author=lynancy" title="Code">💻</a> <a href="#design-lynancy" title="Design">🎨</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/duongnnb"><img src="https://avatars.githubusercontent.com/u/35083061?v=4?s=100" width="100px;" alt="Nguyen Duong"/><br /><sub><b>Nguyen Duong</b></sub></a><br /><a href="https://github.com/mirrorworld-universe/marketplace-storefront/issues?q=author%3Aduongnnb" title="Bug reports">🐛</a> <a href="https://github.com/mirrorworld-universe/marketplace-storefront/commits?author=duongnnb" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
+
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
