@@ -1,4 +1,4 @@
-import { IUser } from "@mirrorworld/web3.js";
+import { IUser } from "@usemirrorworld/web3.js";
 import mitt from "mitt";
 
 type Events = {

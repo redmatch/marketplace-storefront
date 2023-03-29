@@ -14,7 +14,7 @@ import {
   useMemo,
 } from "react";
 import { toast } from "sonner"
-import { ClusterEnvironment, IUser, MirrorWorld } from "@mirrorworld/web3.js";
+import { ClusterEnvironment, IUser, MirrorWorld } from "@usemirrorworld/web3.js";
 import storefrontConfig from "../userConfig.json";
 import { canUseDom } from '@/utils/dom';
 import { eventBus } from '@/utils/bus';
