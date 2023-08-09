@@ -127,6 +127,7 @@ export const getCollectionNfts = async (param: object) => {
   requestInterception();
   const data = await request.post(`nfts`, {
     ...param,
+    auctionHouse: userConfig.auctionHouse,
   });
   return data;
 };
@@ -196,6 +197,7 @@ export const getNftActivities = async (search: string, pageSize: number) => {
     mint_address: search,
     page: pageSize,
     page_size: 10, // max 50
+    auctionHouse: userConfig.auctionHouse,
   });
   return data;
 };
@@ -244,7 +246,6 @@ export const transferNFT = async (
   recipientAddress: string
 ) => {
   requestInterception();
-  console.log(mintAddress, recipientAddress);
   if (!mirrorworld.user) {
     toast("Logging in");
     await login();
@@ -265,6 +266,7 @@ export const getPrice = async (price: number) => {
     price: price,
     //  @ts-ignore
     fee: userConfig.serviceFee * 1000, // 0.001% ～ 100% 对应 1 ～ 100000
+    auctionHouse: userConfig.auctionHouse,
   });
   return data;
 };
