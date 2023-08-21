@@ -8,6 +8,7 @@
   "serviceFee": 1,
 
   "currencyOption": "USDC",
+  "auctionHouse": "0x5E9f5C82Ab636FB12245d6080A0322C271b6a5df",
 
   "name": "playleap-test",
 
