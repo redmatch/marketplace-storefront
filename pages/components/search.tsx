@@ -1,32 +1,32 @@
 import type { NextPage } from "next";
 import styles from "../../styles/Search.module.less";
 import { useRouter } from "next/router";
-import { useMirrorWorld } from '@/hooks/use-mirrorworld';
-import { truncateMiddle } from '@/utils/strings';
-import { useEffect, useState } from 'react';
-import { toast } from "sonner"
-import storefrontConfig from "../../userConfig.json"
+import { useMirrorWorld } from "@/hooks/use-mirrorworld";
+import { truncateMiddle } from "@/utils/strings";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+import storefrontConfig from "../../userConfig.json";
 
-const LAMPORTS_PER_SOL = 1000000000
+const LAMPORTS_PER_SOL = 1000000000;
 
 const Search = () => {
   const router = useRouter();
-  const [solBalance, setSolBalance] = useState<number>(0.0)
-  const { user, logout, login, mirrorworld } = useMirrorWorld()
+  const [solBalance, setSolBalance] = useState<number>(0.0);
+  const { user, logout, login, mirrorworld } = useMirrorWorld();
 
   useEffect(() => {
-    if (user &&  !!mirrorworld) {
+    if (user && !!mirrorworld) {
       mirrorworld.getTokens().then((res: any) => {
-        const solBalance = Number((res.sol / LAMPORTS_PER_SOL).toFixed(2))
-        setSolBalance(solBalance)
-      })
+        const solBalance = Number((res.sol / LAMPORTS_PER_SOL).toFixed(2));
+        setSolBalance(solBalance);
+      });
       // console.log(tokens)
     }
-  }, [user, mirrorworld])
+  }, [user, mirrorworld]);
 
   function writeToClipboard(text: string) {
     navigator.clipboard.writeText(text);
-    toast.success("Copied to wallet address")
+    toast.success("Copied to wallet address");
   }
 
   return (
@@ -34,9 +34,9 @@ const Search = () => {
       <span className={styles.span}>
         {storefrontConfig.name || "Marketplace"}
       </span>
-      
+
       <div className="search-actions">
-        {!user ? (
+        {/* {!user ? (
           <button className={styles.auth_button} onClick={login}>
             Login
           </button>
@@ -55,7 +55,7 @@ const Search = () => {
             Logout
           </button>
           </>
-        )}
+        )} */}
         <img
           src={"/images/icon/icon_search.svg"}
           onClick={() => {

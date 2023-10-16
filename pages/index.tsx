@@ -206,11 +206,11 @@ const Home = () => {
                         }}
                       />
                       {/*@ts-ignore */}
-                      {item?.price || "-"}
+                      {item?.price || 0}
                     </p>
                     {/*@ts-ignore */}
-                    <p>{item?.name.split("#")[0] || "-"}</p>
-                    <p>#{item?.name.split("#")[1] || "-"}</p>
+                    <p>{item?.name || "-"}</p>
+                    {/* <p>#{item?.name.split("#")[1] || "-"}</p> */}
                   </div>
                   // </div>
                 );
