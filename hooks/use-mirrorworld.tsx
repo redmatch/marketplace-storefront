@@ -17,12 +17,16 @@ import { toast } from "sonner";
 import {
   ClusterEnvironment,
   IUser,
-  IVideoModal,
   MirrorWorld,
 } from "@usemirrorworld/web3.js";
 import storefrontConfig from "../userConfig.json";
 import { canUseDom } from "@/utils/dom";
 import { eventBus } from "@/utils/bus";
+export interface IVideoModal {
+  open?: boolean;
+  assetRefernce?: string;
+  assetPoster?: string;
+}
 
 export interface IMirrorWorldContext {
   user?: IUser;
