@@ -1,11 +1,11 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../../styles/Filter.module.less";
+import styles from "../styles/Filter.module.less";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { getCollectionFilter, getCollectionNfts } from "../api/request";
-import  userConfig  from "@/userConfig.json";
+import { getCollectionFilter, getCollectionNfts } from "../pages/api/request";
+import userConfig from "@/userConfig.json";
 import { json } from "stream/consumers";
 
 export interface props {
@@ -14,7 +14,7 @@ export interface props {
   style: object;
 }
 
-let mounted = false
+let mounted = false;
 
 const Filter = (props: props) => {
   const { search, data, style } = props;
@@ -135,24 +135,22 @@ const Filter = (props: props) => {
   };
 
   useEffect(() => {
-    if (mounted) return
+    if (mounted) return;
 
-    const allNFTsIndex = 2
+    const allNFTsIndex = 2;
 
     search((allNFTsIndex + 1) % 3, "sale");
     setSaleSearchVal(allNFTsIndex);
     setOrderSearch(false);
     setShowSaleSearch(false);
 
-    mounted = true
+    mounted = true;
 
     return () => {
-      mounted = true
-    }
-  }, [])
+      mounted = true;
+    };
+  }, []);
 
-
-  
   return (
     <div id="filter" style={{ ...style }}>
       <div className={styles.filter}>

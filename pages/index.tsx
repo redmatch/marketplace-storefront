@@ -1,19 +1,18 @@
 import styles from "../styles/Home.module.less";
 
-import Search from "./components/search";
-import Filter from "./components/filter";
+import Search from "../components/search";
+import Filter from "../components/filter";
 import React, { useEffect, useMemo, useState } from "react";
 import { getCollectionInfo, getCollectionNfts } from "./api/request";
 import userConfig from "@/userConfig.json";
 import { useRouter } from "next/router";
-import { useMirrorWorld } from '@/hooks/use-mirrorworld';
+import { useMirrorWorld } from "@/hooks/use-mirrorworld";
 
 const newList = new Array();
 const Home = () => {
+  const { mirrorworld } = useMirrorWorld();
 
-  const { mirrorworld } = useMirrorWorld()
-
-  const user = useMemo(() => mirrorworld?.user, [mirrorworld])
+  const user = useMemo(() => mirrorworld?.user, [mirrorworld]);
 
   const [filterData, setFilterData] = useState([]);
   const [firstTime, setFirstTime] = useState(false);
@@ -124,11 +123,8 @@ const Home = () => {
   }
 
   useEffect(() => {
-    console.log("user", user)
-  }, [user])
-
-
-
+    console.log("user", user);
+  }, [user]);
 
   return (
     <div>
@@ -206,11 +202,11 @@ const Home = () => {
                         }}
                       />
                       {/*@ts-ignore */}
-                      {item?.price || "-"}
+                      {item?.price || 0}
                     </p>
                     {/*@ts-ignore */}
-                    <p>{item?.name.split("#")[0] || "-"}</p>
-                    <p>#{item?.name.split("#")[1] || "-"}</p>
+                    <p>{item?.name || "-"}</p>
+                    {/* <p>#{item?.name.split("#")[1] || "-"}</p> */}
                   </div>
                   // </div>
                 );

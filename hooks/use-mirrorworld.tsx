@@ -13,97 +13,117 @@ import {
   useRef,
   useMemo,
 } from "react";
-import { toast } from "sonner"
-import { ClusterEnvironment, IUser, MirrorWorld } from "@usemirrorworld/web3.js";
+import { toast } from "sonner";
+import {
+  ClusterEnvironment,
+  IUser,
+  MirrorWorld,
+} from "@usemirrorworld/web3.js";
 import storefrontConfig from "../userConfig.json";
-import { canUseDom } from '@/utils/dom';
-import { eventBus } from '@/utils/bus';
+import { canUseDom } from "@/utils/dom";
+import { eventBus } from "@/utils/bus";
+export interface IVideoModal {
+  open?: boolean;
+  assetRefernce?: string;
+  assetPoster?: string;
+}
 
 export interface IMirrorWorldContext {
   user?: IUser;
   mirrorworld: MirrorWorld;
   login(): Promise<void>;
   logout(): Promise<void>;
+  videoModal?: IVideoModal;
+  openVideoModal: (val: IVideoModal) => void;
+  closeVideoModal: () => void;
 }
 
-const MIRROR_WORLD_API_KEY = storefrontConfig.xApiKey
+const MIRROR_WORLD_API_KEY = storefrontConfig.xApiKey;
 
 const MirrorWorldContext = createContext<IMirrorWorldContext>(
   {} as IMirrorWorldContext
 );
 
-
-export const REFRESH_TOKEN_KEY = `x-storefront-${storefrontConfig.auctionHouse}-REFRESH_TOKEN_KEY`
-export const AUTH_TOKEN_KEY = `x-storefront-${storefrontConfig.auctionHouse}-AUTH_TOKEN_KEY`
+export const REFRESH_TOKEN_KEY = `x-storefront-${storefrontConfig.auctionHouse}-REFRESH_TOKEN_KEY`;
+export const AUTH_TOKEN_KEY = `x-storefront-${storefrontConfig.auctionHouse}-AUTH_TOKEN_KEY`;
 const auth = {
   authToken: canUseDom ? localStorage.getItem(AUTH_TOKEN_KEY) : undefined,
   refreshToken: canUseDom ? localStorage.getItem(REFRESH_TOKEN_KEY) : undefined,
-}
-const autoLoginCredentials = auth.refreshToken
+};
+const autoLoginCredentials = auth.refreshToken;
 
-export let __mirrorworld: MirrorWorld
-
+export let __mirrorworld: MirrorWorld;
 
 function createMirrorWorld() {
   return new MirrorWorld({
     apiKey: storefrontConfig.xApiKey,
-    env: storefrontConfig.network === "mainnet" ? ClusterEnvironment.mainnet : ClusterEnvironment.testnet,
-     ...!!autoLoginCredentials && { autoLoginCredentials },
-     auth: {
-      ...auth.authToken && { authToken: auth.authToken },
-      ...auth.refreshToken && { refreshToken: auth.refreshToken },
-     }
-  })
+    env:
+      storefrontConfig.network === "mainnet"
+        ? ClusterEnvironment.mainnet
+        : ClusterEnvironment.testnet,
+    ...(!!autoLoginCredentials && { autoLoginCredentials }),
+    auth: {
+      ...(auth.authToken && { authToken: auth.authToken }),
+      ...(auth.refreshToken && { refreshToken: auth.refreshToken }),
+    },
+  });
 }
 
 function tryCreateMirrorWorld() {
   try {
-    return createMirrorWorld()
+    return createMirrorWorld();
   } catch (error) {
-    console.error(error)
-    return createMirrorWorld()
+    console.error(error);
+    return createMirrorWorld();
   }
 }
 
 try {
-  __mirrorworld = createMirrorWorld()
+  __mirrorworld = createMirrorWorld();
 } catch (error) {
-  console.error(error)
-  __mirrorworld = tryCreateMirrorWorld()
+  console.error(error);
+  __mirrorworld = tryCreateMirrorWorld();
 }
 
-let __user: IUser | undefined
+let __user: IUser | undefined;
 __mirrorworld.on("auth:refreshToken", async (refreshToken) => {
-  console.debug("auto-logging in user", refreshToken)
+  console.debug("auto-logging in user", refreshToken);
   if (canUseDom && refreshToken) {
     try {
       await localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken!);
       __user = await __mirrorworld.fetchUser();
     } catch (error) {
-      console.warn("Error handling fetch user on refresh token", error)
+      console.warn("Error handling fetch user on refresh token", error);
     }
   }
 });
-
 
 export function useMirrorWorld() {
   return useContext(MirrorWorldContext);
 }
 
-
 export const MirrorWorldProvider = ({ children }: { children: ReactNode }) => {
   const [mirrorworld, setMirrorworld] = useState<MirrorWorld>(__mirrorworld);
+
+  const [videoModal, setVideoModal] = useState<IVideoModal>({
+    open: false,
+    assetPoster: "",
+    assetRefernce: "",
+  });
 
   const [_user, setUser] = useState<IUser>();
   const isInitialized = useRef(false);
 
-  const user = useMemo(() => _user || mirrorworld?.user || __user, [_user, mirrorworld])
+  const user = useMemo(
+    () => _user || mirrorworld?.user || __user,
+    [_user, mirrorworld]
+  );
 
   async function login() {
     if (!mirrorworld) throw new Error("Mirror World SDK is not initialized");
     const result = await mirrorworld.login();
     console.log("result", result);
-    
+
     if (result.user) {
       setUser(result.user);
       localStorage.setItem(REFRESH_TOKEN_KEY, result.refreshToken);
@@ -120,7 +140,7 @@ export const MirrorWorldProvider = ({ children }: { children: ReactNode }) => {
         }
       });
 
-      isInitialized.current = true
+      isInitialized.current = true;
     }
 
     return () => {
@@ -129,9 +149,17 @@ export const MirrorWorldProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   async function logout() {
-    await mirrorworld.logout()
-    localStorage.clear()
-    setUser(undefined)
+    await mirrorworld.logout();
+    localStorage.clear();
+    setUser(undefined);
+  }
+
+  async function openVideoModal({ assetPoster, assetRefernce }: IVideoModal) {
+    setVideoModal({ open: true, assetPoster, assetRefernce });
+  }
+
+  async function closeVideoModal() {
+    setVideoModal({ open: false, assetPoster: "", assetRefernce: "" });
   }
 
   return (
@@ -140,7 +168,10 @@ export const MirrorWorldProvider = ({ children }: { children: ReactNode }) => {
         mirrorworld: mirrorworld as MirrorWorld,
         user,
         login,
-        logout
+        logout,
+        videoModal,
+        openVideoModal,
+        closeVideoModal,
       }}
     >
       {children}

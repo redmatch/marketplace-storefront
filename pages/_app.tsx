@@ -7,8 +7,9 @@ import "antd-mobile/bundle/css-vars-patch.css";
 import type { AppProps } from "next/app";
 
 import Head from "next/head";
-import { Toaster } from 'sonner';
-import { MirrorWorldProvider } from '@/hooks/use-mirrorworld';
+import { Toaster } from "sonner";
+import { MirrorWorldProvider } from "@/hooks/use-mirrorworld";
+import VideoModal from "@/components/video-modal";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -21,6 +22,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <MirrorWorldProvider>
         <Component {...pageProps} />
+        <VideoModal />
       </MirrorWorldProvider>
       <Toaster richColors />
     </>

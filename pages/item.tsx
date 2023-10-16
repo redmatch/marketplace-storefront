@@ -2,14 +2,15 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Item.module.less";
-import Footer from "./components/footer";
+import Footer from "../components/footer";
 import { useRouter } from "next/router";
 import { getNft, getNftActivities, getUser } from "./api/request";
 import React, { useEffect, useState } from "react";
 import { Divider } from "antd-mobile";
 import { relative } from "path";
 import { redirect } from "next/dist/server/api-utils";
-import { canUseDom } from '@/utils/dom';
+import { canUseDom } from "@/utils/dom";
+import { useMirrorWorld } from "@/hooks/use-mirrorworld";
 
 // let pageSize = 1;
 let activitylist: any = [];
@@ -17,12 +18,14 @@ let activitylist: any = [];
 const NftItem = () => {
   const router = useRouter();
   const [data, setData] = useState({});
+  const [videoUrl, setVideoUrl] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [activity, setActivity] = useState(new Array());
   const [init, setInit] = useState(false);
   const [scrollTop, setScrollTop] = useState(0);
   const [pageSize, setPageSize] = useState(1);
   const { query } = router;
+  const { openVideoModal } = useMirrorWorld();
   const getAddress = () => {
     const queryString = canUseDom ? window.location.search : "";
     const urlParams = new URLSearchParams(queryString);
@@ -89,7 +92,15 @@ const NftItem = () => {
       getAddress("addr")
       //"9GeknX5dxZgAV6XtYaTFsTrv1BFjLgYNKNs7egMqqDCB"
     ).then((res: any) => {
-      setData(res?.data?.data);
+      const result = res?.data?.data;
+      setData(result);
+      if (result?.attributes?.length) {
+        result.attributes.forEach((item: any) => {
+          if (item.trait_type.toLowerCase() === "video") {
+            setVideoUrl(item.value);
+          }
+        });
+      }
     });
     getUser().then((res) => {
       setUserInfo(res);
@@ -231,10 +242,30 @@ const NftItem = () => {
             <img
               // @ts-ignore
               src={data?.image}
-              onClick={() => {
-                router.push("/search");
-              }}
-            ></img>
+            />
+            {videoUrl ? (
+              <div className={styles.playWrapper}>
+                <span className={styles.play}>
+                  <Image
+                    width={80}
+                    height={80}
+                    src={"/images/play.svg"}
+                    alt="play"
+                    onClick={() => {
+                      if (videoUrl) {
+                        openVideoModal({
+                          // @ts-ignore
+                          assetPoster: data?.image,
+                          // @ts-ignore
+                          assetRefernce: videoUrl,
+                        });
+                      }
+                    }}
+                  />
+                </span>
+              </div>
+            ) : null}
+
             <p>
               {/*  @ts-ignore */}
               <span>{data?.name}</span>
@@ -457,14 +488,16 @@ const NftItem = () => {
             ""
           )}
           {/*@ts-ignore */}
-          {// @ts-ignore
-          data?.listed &&
-          // @ts-ignore
-          userInfo?.wallet?.sol_address !== data.owner_address ? (
-            <Footer data={data} userInfo={userInfo}></Footer>
-          ) : (
-            ""
-          )}
+          {
+            // @ts-ignore
+            data?.listed &&
+            // @ts-ignore
+            userInfo?.wallet?.sol_address !== data.owner_address ? (
+              <Footer data={data} userInfo={userInfo}></Footer>
+            ) : (
+              ""
+            )
+          }
         </div>
       )}
     </>
