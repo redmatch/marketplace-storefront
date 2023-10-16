@@ -1,33 +1,33 @@
 import type { NextPage } from "next";
-import styles from "../../styles/Search.module.less";
+import styles from "../styles/Search.module.less";
 import { useRouter } from "next/router";
 import { useMirrorWorld } from "@/hooks/use-mirrorworld";
 import { truncateMiddle } from "@/utils/strings";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
-import storefrontConfig from "../../userConfig.json";
+import storefrontConfig from "../userConfig.json";
 
 const LAMPORTS_PER_SOL = 1000000000;
 
 const Search = () => {
   const router = useRouter();
-  const [solBalance, setSolBalance] = useState<number>(0.0);
-  const { user, logout, login, mirrorworld } = useMirrorWorld();
+  // const [solBalance, setSolBalance] = useState<number>(0.0);
+  // const { user, logout, login, mirrorworld } = useMirrorWorld();
 
-  useEffect(() => {
-    if (user && !!mirrorworld) {
-      mirrorworld.getTokens().then((res: any) => {
-        const solBalance = Number((res.sol / LAMPORTS_PER_SOL).toFixed(2));
-        setSolBalance(solBalance);
-      });
-      // console.log(tokens)
-    }
-  }, [user, mirrorworld]);
+  // useEffect(() => {
+  //   if (user && !!mirrorworld) {
+  //     mirrorworld.getTokens().then((res: any) => {
+  //       const solBalance = Number((res.sol / LAMPORTS_PER_SOL).toFixed(2));
+  //       setSolBalance(solBalance);
+  //     });
+  //     // console.log(tokens)
+  //   }
+  // }, [user, mirrorworld]);
 
-  function writeToClipboard(text: string) {
-    navigator.clipboard.writeText(text);
-    toast.success("Copied to wallet address");
-  }
+  // function writeToClipboard(text: string) {
+  //   navigator.clipboard.writeText(text);
+  //   toast.success("Copied to wallet address");
+  // }
 
   return (
     <div className={styles.search}>
