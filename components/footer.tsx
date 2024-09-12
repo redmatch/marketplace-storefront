@@ -1,7 +1,7 @@
-import styles from "../../styles/Footer.module.less";
+import styles from "../styles/Footer.module.less";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { buyNFT, getUser } from "../api/request";
+import { buyNFT, getUser } from "../pages/api/request";
 import Loader from "./loader";
 
 export interface props {

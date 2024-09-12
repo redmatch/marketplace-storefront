@@ -1,10 +1,16 @@
 {
-  "auctionHouse": "Please enter your Auction House Address",
-  "collections": ["Please enter your Collection ID"],
-  "xApiKey": "Please enter your API Key",
-  "serviceFee": "Please enter your service fee (Recommended 4.25)",
-  "currencyOption": "Please enter your payment token",
-  "name": "Please enter your storefront name",
-  "logo": "Please enter your logo image URL",
-  "network": "Please enter your selected network "
+  "collections": ["4f457YZ3muoSoptcTouHHGzc8hJPRnhygc4aqfCXjBL3"],
+
+  "network": "solana/devnet",
+
+  "xApiKey": "mw_JIsbrwtOFcopiAf6IKMGIDHlyc6gRBTFWWg",
+
+  "serviceFee": 1,
+
+  "currencyOption": "USDC",
+  "auctionHouse": "0x5E9f5C82Ab636FB12245d6080A0322C271b6a5df",
+
+  "name": "Playleap",
+
+  "logo": "https://collections.mirrorworld.fun/1692610954304-14157_vida_balance_2154_14b55585f70d4ee1bff7e598e34ace64.png"
 }
